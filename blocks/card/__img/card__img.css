@@ -1,0 +1,7 @@
+.card__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}

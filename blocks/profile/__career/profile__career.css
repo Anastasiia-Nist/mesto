@@ -1,0 +1,12 @@
+.profile__career {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 10px 0 0;
+}
+@media screen and (max-width: 620px) {
+    .profile__career {
+    font-size: 14px;
+    line-height: 17px;
+    }  
+}

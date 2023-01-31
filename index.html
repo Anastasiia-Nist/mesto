@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+  <header class="header">
+    <img src="./images/logo.png" alt="Логотип." class="header__logo">
+  </header>
+  <main>
+    <section class="profile">
+        <img src="./images/avatar.jpg" alt="Аватарка" class="profile__img">
+        <div class="profile__info">
+            <div class="profile__info-wrapper">
+                <p class="profile__name">Жак&#8211;Ив&nbsp;Кусто</p>
+                <button class="profile__button-edit button-hover"></button>              
+            </div>
+            <p class="profile__career">Исcледователь океана</p>
+        </div>
+        <button class="profile__button-add button-hover"></button>
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__button-close"></button>
+                <p class="popup__title">Редактировать профиль</p>
+                <form class="popup__form">
+                    <input class="popup__input popup__input-name" type="text" name="name" placeholder="Жак-Ив Кусто">
+                    <input class="popup__input popup__input-career" type="text" name="career" placeholder="Иследователь океана">
+                    <button class="popup__button-save" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="cards">
+        <article class="card">
+            <img src="./images/Ivanovo.jpg" alt="город Иваново." class="card__img">
+            <div class="card__info">
+                <p class="card__name">Иваново</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+        <article class="card">
+            <img src="./images/Saint-Petersburg.jpg" alt="город Санкт-Петербург." class="card__img">
+            <div class="card__info">
+                <p class="card__name">Санкт-Петербург</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+        <article class="card">
+            <img src="./images/Kostroma.jpg" alt="город Кострома." class="card__img">
+            <div class="card__info">
+                <p class="card__name">Кострома</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+        <article class="card">
+            <img src="./images/Murmansk.jpg" alt="город Мурманск" class="card__img">
+            <div class="card__info">
+                <p class="card__name">Мурманск</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+        <article class="card">
+            <img src="./images/Taganrog.jpg" alt="город Таганрог." class="card__img">
+            <div class="card__info">
+                <p class="card__name">Таганрог</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+        <article class="card">
+            <img src="./images/Kurgan.jpg" alt="город Курган." class="card__img">
+            <div class="card__info">
+                <p class="card__name">Курган</p>
+                <button class="card__button-like card__button-like_active button-hover"></button>                
+            </div>
+        </article>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copywriter">&copy; 2022 Mesto Russia by Anastasia &#128506;</p>
+  </footer>
+  <script src="./script.js"></script>
+</body>
+</html>
