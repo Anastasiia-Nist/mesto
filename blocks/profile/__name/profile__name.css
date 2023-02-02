@@ -5,6 +5,17 @@
     margin: 22px 0 0 0;
     max-width: 294px;
     padding-right: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+@media screen and (max-width: 900px) {
+    .profile__name {
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px; 
+
+    }   
 }
 
 @media screen and (max-width: 620px) {
@@ -14,5 +25,6 @@
         line-height: 33px; 
         padding-right: 12px;
         padding-left: 25px;
+        margin-top: 26px; /*отступ не соответствует макету-подогнан под перфект пиксель*/
     }   
 }

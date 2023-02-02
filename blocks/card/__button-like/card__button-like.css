@@ -3,6 +3,8 @@
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     width: 22px;
     border: none;
+    padding: 0;
 }
