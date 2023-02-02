@@ -1,5 +1,5 @@
 .card__info {
-    margin: 25px auto; /*-3px с каждой стороны, т.к. в макете не совпадает высота контейнера(23px) и line-height(29px)*/
+    margin: 25px auto; /*-3px с каждой стороны (пёрфект пиксель), т.к. в макете не совпадает высота контейнера(23px) и line-height(29px)*/
     display: flex;
     justify-content: space-between;
     width: 86%;

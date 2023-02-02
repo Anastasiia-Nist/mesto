@@ -8,12 +8,13 @@
     padding: 34px 36px 37px;
     border-radius: 10px;
     position: relative;
-    top: 16px /*сдвинула по пёрфект пикселю. */
+    top: 10px; /*сдвинула по пёрфект пикселю. */
 }
 
 @media screen and (max-width: 620px) {
     .popup__container {
         max-width: 282px;
         padding: 23px;
+        top: 0;
     }   
 }
