@@ -1,15 +1,15 @@
 .card__button-like {
-    background-image: url(../../../images/like.svg);
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 22px;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+  background-image: url(../../../images/like.svg);
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 22px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .card__button-like:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }

@@ -1,25 +1,25 @@
 .profile__button-add {
-    width: 150px;
-    height: 50px;
-    padding: 0;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    background-color: #000;
-    align-self: center;
-    margin-left: auto;
-    background-image: url(../../../images/pensil.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
+  width: 150px;
+  height: 50px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  background-color: #000;
+  align-self: center;
+  margin-left: auto;
+  background-image: url(../../../images/pensil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
 .profile__button-add:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 620px) {
-    .profile__button-add {
-        width: 100%;
-        margin: 32px auto 0;
-    }   
+  .profile__button-add {
+    width: 100%;
+    margin: 32px auto 0;
+  }
 }

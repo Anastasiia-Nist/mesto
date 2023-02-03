@@ -1,14 +1,14 @@
 .header {
-    max-width: 68.8%;
-    min-height: 74px;
-    border-bottom: 1px solid #545454;
-    margin: 45px auto 0;
+  max-width: 68.8%;
+  min-height: 74px;
+  border-bottom: 1px solid #545454;
+  margin: 45px auto 0;
 }
 @media screen and (max-width: 620px) {
-    .header {
-        max-width: 88%;
-        min-height: 56px;
-        margin-top: 28px;
-        margin-left: 27px;
-    }   
+  .header {
+    max-width: 88%;
+    min-height: 56px;
+    margin-top: 28px;
+    margin-left: 27px;
+  }
 }
