@@ -10,6 +10,11 @@
     background-image: url(../../../images/pensil.svg);
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
+}
+
+.profile__button-add:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 620px) {

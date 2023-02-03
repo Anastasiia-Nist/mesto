@@ -8,7 +8,13 @@
     border: 1px solid #fff;
     margin: 37px 0 0;
     padding: 7px;
+    cursor: pointer;
 }
+
+.profile__button-edit:hover {
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 620px) {
     .profile__button-edit {
         width: 18px;

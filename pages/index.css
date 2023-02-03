@@ -1,8 +1,6 @@
 
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/Inter-3.19/Inter-Web/inter.css);
-/*миксы*/
-@import url(../blocks/button-hover/button-hover.css);
 
 @import url(../blocks/page/page.css);
 
