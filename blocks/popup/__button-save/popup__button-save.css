@@ -5,6 +5,7 @@
   background-color: #000;
   border-radius: 2px;
   color: #fff;
+  font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -17,6 +18,10 @@
 
 @media screen and (max-width: 620px) {
   .popup__button-save {
-    width: 214px;
+    width: 238px;
+    height: 46px;
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

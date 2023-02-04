@@ -8,6 +8,7 @@
   align-self: center;
   margin-left: auto;
   background-image: url(../../../images/pensil.svg);
+  background-size: 22px;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -17,9 +18,10 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 768px) {
   .profile__button-add {
     width: 100%;
     margin: 32px auto 0;
+    background-size: 16px;
   }
 }

@@ -3,3 +3,9 @@
   flex-direction: column;
   margin-top: 24px;
 }
+
+@media screen and (max-width: 620px) {
+  .popup__form {
+    margin-top: 44px;
+  }
+}
