@@ -9,75 +9,75 @@
 </head>
 <body class="page">
   <header class="header">
-    <img src="./images/logo.png" alt="Логотип." class="header__logo">
+    <img src="./images/logo.svg" alt="Логотип." class="header__logo">
   </header>
   <main>
     <section class="profile">
         <img src="./images/avatar.jpg" alt="Аватарка" class="profile__img">
         <div class="profile__info">
             <div class="profile__info-wrapper">
-                <p class="profile__name">Жак&#8211;Ив&nbsp;Кусто</p>
-                <button class="profile__button-edit"></button>              
+                <h1 class="profile__name">Жак-Ив&nbsp;Кусто</h1>
+                <button class="profile__button-edit" type="button"></button>              
             </div>
             <p class="profile__career">Исcледователь океана</p>
         </div>
-        <button class="profile__button-add"></button>
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__button-close"></button>
-                <p class="popup__title">Редактировать профиль</p>
-                <form class="popup__form">
-                    <input class="popup__input popup__input-name" type="text" name="name" placeholder="Жак-Ив Кусто">
-                    <input class="popup__input popup__input-career" type="text" name="career" placeholder="Иследователь океана">
-                    <button class="popup__button-save" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
+        <button class="profile__button-add" type="button"></button>
     </section>
     <section class="cards">
         <article class="card">
             <img src="./images/Ivanovo.jpg" alt="город Иваново." class="card__img">
             <div class="card__info">
-                <p class="card__name">Иваново</p>
+                <h2 class="card__name">Иваново</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Saint-Petersburg.jpg" alt="город Санкт-Петербург." class="card__img">
             <div class="card__info">
-                <p class="card__name">Санкт-Петербург</p>
+                <h2 class="card__name">Санкт-Петербург</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Kostroma.jpg" alt="город Кострома." class="card__img">
             <div class="card__info">
-                <p class="card__name">Кострома</p>
+                <h2 class="card__name">Кострома</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Murmansk.jpg" alt="город Мурманск" class="card__img">
             <div class="card__info">
-                <p class="card__name">Мурманск</p>
+                <h2 class="card__name">Мурманск</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Taganrog.jpg" alt="город Таганрог." class="card__img">
             <div class="card__info">
-                <p class="card__name">Таганрог</p>
+                <h2 class="card__name">Таганрог</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Kurgan.jpg" alt="город Курган." class="card__img">
             <div class="card__info">
-                <p class="card__name">Курган</p>
+                <h2 class="card__name">Курган</h2>
                 <button class="card__button-like card__button-like_active"></button>                
             </div>
         </article>
     </section>
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="popupForm">
+                <input class="popup__input popup__input_details_name" type="text" name="name" required>
+                <input class="popup__input popup__input_details_career" type="text" name="career" required>
+                <button class="popup__button-save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
   </main>
   <footer class="footer">
     <p class="footer__copywriter">&copy; 2022 Mesto Russia by Anastasia &#128506;</p>

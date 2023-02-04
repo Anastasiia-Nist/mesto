@@ -9,6 +9,7 @@
   line-height: 22px;
   text-align: center;
   cursor: pointer;
+  border: none;
 }
 .popup__button-save:hover {
   opacity: 0.8;
