@@ -9,13 +9,13 @@ let careerInput = document.querySelector('.popup__input_details_career');
 
 //открытие попапа
 function openedPopup() {
-    popup.classList.toggle('popup_opened');
+    popup.classList.add('popup_opened');
     nameInput.value = profileName.textContent;
     careerInput.value = profileCareer.textContent;
 }
 //закрытие попапа
 function closedPopup() {
-    popup.classList.toggle('popup_opened');
+    popup.classList.remove('popup_opened');
 }
 
 //отправка формы
