@@ -8,11 +8,25 @@
   font-size: 14px;
   line-height: 17px;
   padding: 0 2px 13px;
+  color: #000;
 }
 .popup__input::placeholder {
-  color: #000000;
+  color: rgba(84, 84, 84, 0.8);
 }
 
+/*скрытие placeholder при клике на инпут*/
+:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+:focus::-moz-placeholder {
+  color: transparent;
+}
+:focus:-moz-placeholder {
+  color: transparent;
+}
+:focus:-ms-input-placeholder {
+  color: transparent;
+}
 
 @media screen and (max-width: 620px) {
   .popup__input {
