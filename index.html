@@ -28,52 +28,63 @@
             <img src="./images/Ivanovo.jpg" alt="город Иваново." class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Иваново</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Saint-Petersburg.jpg" alt="город Санкт-Петербург." class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Санкт-Петербург</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Kostroma.jpg" alt="город Кострома." class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Кострома</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Murmansk.jpg" alt="город Мурманск" class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Мурманск</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Taganrog.jpg" alt="город Таганрог." class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Таганрог</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
         <article class="card">
             <img src="./images/Kurgan.jpg" alt="город Курган." class="card__img">
             <div class="card__info">
                 <h2 class="card__name">Курган</h2>
-                <button class="card__button-like card__button-like_active"></button>                
+                <button class="card__button-like"></button>                
             </div>
         </article>
     </section>
-    <div class="popup">
+    <div class="popup popup__profile">
         <div class="popup__container">
             <button class="popup__button-close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" name="UserInfoForm">
                 <input class="popup__input popup__input_type_name" type="text" name="name" required placeholder="Имя">
                 <input class="popup__input popup__input_type_career" type="text" name="career" required placeholder="О себе">
+                <button class="popup__button-save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup__cards">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form" name="CardForm">
+                <input class="popup__input popup__input_type_name" type="text" name="place" required placeholder="Название">
+                <input class="popup__input popup__input_type_career" type="url" name="link" required placeholder="Ссылкана картинку">
                 <button class="popup__button-save" type="submit">Сохранить</button>
             </form>
         </div>
