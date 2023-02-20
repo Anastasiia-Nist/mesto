@@ -26,14 +26,15 @@ const initialCards = [
 ];
 
 //попапы
-const popup = document.querySelectorAll('.popup');
+const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup__profile');
 const popupCards = document.querySelector('.popup__cards');
 //кнопки
 const profileButtonEdit = document.querySelector('.profile__button-edit');
-const popupButtonClose = document.querySelectorAll('.popup__button-close');
+const popupButtonCloseProfile = document.querySelector('.popup__button-close-profile');
+const popupButtonCloseCards = document.querySelector('.popup__button-close-cards');
 const cardsButtonAdd = document.querySelector('.profile__button-add');
-const cardButtonLike = document.querySelectorAll('.card__button-like');
+const cardButtonLike = document.querySelector('.card__button-like');
 
 const profileName =  document.querySelector('.profile__name');
 const profileCareer = document.querySelector('.profile__career');
@@ -56,22 +57,24 @@ function closedPopup(popup) {
     popup.classList.remove('popup_opened');
     console.log('закрытие');
 }
+
 // все кнопки закрытия попапа 
-popupButtonClose.forEach((btn) => {
-    btn.addEventListener('click', function () { 
-        closedPopup(popupProfile);
-        closedPopup(popupCards); //какая-то фигня, но работает)
-    });
+popupButtonCloseProfile.addEventListener('click', function() {
+    closedPopup(popupProfile);
+});
+popupButtonCloseCards.addEventListener('click', function() {
+  closedPopup(popupCards);
 });
 
-// попап блока профиль
+
+// попап блока User
 function handleProfilePopup() {
     openedPopup(popupProfile);
     nameInput.value = profileName.textContent;
     careerInput.value = profileCareer.textContent;
 }
 
-//отправка формы блока профиль
+//отправка формы блока User
 function handleFormSubmit (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
@@ -115,9 +118,12 @@ function addCard(el) {
   });
 
 //лайки карточек
+const likeActive = () => {
+  cardButtonLike.classList.toggle("card__button-like_active");
+};
 
-profileButtonEdit.addEventListener('click', handleProfilePopup);
+profileButtonEdit.addEventListener('click', handleProfilePopup);//открытие попапа User
 cardsButtonAdd.addEventListener("click", function () {
     openedPopup(popupCards);
-  });
-formProfile.addEventListener('submit', handleFormSubmit);
+  }); //открытие попапа с карточками
+formProfile.addEventListener('submit', handleFormSubmit);//отправка формы User
