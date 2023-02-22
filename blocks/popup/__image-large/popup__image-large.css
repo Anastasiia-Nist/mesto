@@ -4,3 +4,9 @@
     aspect-ratio: auto;
     object-fit: contain;
   }
+
+  @media screen and (max-width: 620px) {
+    .popup__image-large {
+      max-width: 75vw;
+    }
+  }
