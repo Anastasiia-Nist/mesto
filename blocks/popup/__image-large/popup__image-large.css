@@ -1,0 +1,6 @@
+.popup__image-large {
+    max-width: 64vw;
+    max-height: 75vh;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }

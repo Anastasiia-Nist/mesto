@@ -25,12 +25,6 @@ const initialCards = [
   },
 ];
 
-//
-const CARDS_LIST = document.querySelector(".cards");
-const CARD = document.querySelector("#card");
-const TEMPLATE_CARD = document.querySelector("#template-card");
-const CARD_INFO = document.querySelector(".card__info");
-
 //попапы
 const popup = document.querySelector(".popup");
 const popupProfile = document.querySelector(".popup__profile");
@@ -50,6 +44,10 @@ const profileCareer = document.querySelector(".profile__career");
 const formProfile = document.querySelector(".popup__form-profile");
 const nameInput = document.querySelector(".popup__input_type_name");
 const careerInput = document.querySelector(".popup__input_type_career");
+
+// карточки
+const cardList = document.querySelector(".cards");
+const template = document.querySelector("#template-card");
 
 // форма добавления карточек
 const formCards = document.querySelector(".popup__form-cards");
@@ -87,7 +85,7 @@ function handleFormSubmit(evt) {
 //добавление 6 карточек из массива initialCards на страничку
 
 function createCard(name, link) {
-  const defaultCard = TEMPLATE_CARD.content.querySelector(".card");
+  const defaultCard = template.content.querySelector(".card");
   const newCard = defaultCard.cloneNode(true);
 
   const newCardImg = newCard.querySelector(".card__img");
@@ -129,7 +127,7 @@ function createCard(name, link) {
 function addAllCard() {
   initialCards.forEach((card) => {
     const newCard = createCard(card.name, card.link);
-    CARDS_LIST.append(newCard);
+    cardList.append(newCard);
   });
 }
 
@@ -150,7 +148,7 @@ formProfile.addEventListener("submit", handleFormSubmit);
 formCards.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const newCard = createCard(cardInput.value, urlInput.value);
-  CARDS_LIST.prepend(newCard);
+  cardList.prepend(newCard);
   closedPopup(popupCards);
   evt.target.reset();
 });

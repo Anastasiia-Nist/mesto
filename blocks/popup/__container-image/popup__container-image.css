@@ -1,6 +1,4 @@
 .popup__container-image {
-    max-width: 80%;
-    max-height: 80%;
-    position: relative;
-    align-items: center;
+    position: fixed;
+    box-sizing: border-box;
 }
