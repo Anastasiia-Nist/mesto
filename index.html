@@ -42,10 +42,19 @@
             <button class="popup__button-close popup__button-close-cards" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form popup__form-cards" name="CardForm">
-                <input class="popup__input popup__input_type_name" type="text" name="place" required placeholder="Название">
-                <input class="popup__input popup__input_type_career" type="url" name="link" required placeholder="Ссылкана картинку">
+                <input class="popup__input popup__input_card_name" type="text" name="place" required placeholder="Название">
+                <input class="popup__input popup__input_card_img" type="url" name="link" required placeholder="Ссылка на картинку">
                 <button class="popup__button-save" type="submit">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <div class="popup popup__image">
+        <div class="popup__container-image">
+            <figure class="popup__figure">
+                <img class="popup__image-large" src="#" alt="Фотография пользователя">
+                <figcaption class="popup__image-title"></figcaption>
+            </figure>
+            <button class="popup__button-close popup__button-close-image" type="button"></button>
         </div>
     </div>
   </main>
@@ -59,6 +68,7 @@
             <h2 class="card__name"></h2>
             <button class="card__button-like"></button>                
         </div>
+        <button class="card__button-trash"></button>
     </article>
   </template>
 
