@@ -54,7 +54,7 @@ function handleUserFormSubmit(evt) {
   closePopup(popupProfile);
 }
 
-//добавление 6 карточек из массива initialCards на страничку
+//добавление новой карточки
 
 function createCard(name, link) {
   const defaultCard = template.content.querySelector(".card");
@@ -95,7 +95,7 @@ function createCard(name, link) {
 
   return newCard;
 }
-
+//добавление 6 карточек из массива initialCards на страничку
 function addInitialCard() {
   initialCards.forEach((card) => {
     const newCard = createCard(card.name, card.link);
