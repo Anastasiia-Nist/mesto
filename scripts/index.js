@@ -44,7 +44,7 @@ function openProfilePopup() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   careerInput.value = profileCareer.textContent;
-  popupProfile.addEventListener("click", (evt) => {
+  popupProfile.addEventListener("mousedown", (evt) => {
     closePopupOnClickOnOverlay(evt);
   });
 }
@@ -88,7 +88,7 @@ function createCard(name, link) {
     cardImage.src = link;
     cardImage.alt = name;
     cardName.textContent = name;
-    popupImage.addEventListener("click", (evt) => {
+    popupImage.addEventListener("mousedown", (evt) => {
       closePopupOnClickOnOverlay(evt);
     });
   }
@@ -126,7 +126,7 @@ profileButtonEdit.addEventListener("click", openProfilePopup);
 //открытие попапа с формой добавления карточек
 cardsButtonAdd.addEventListener("click", function () {
   openPopup(popupCards);
-  popupCards.addEventListener("click", (evt) => {
+  popupCards.addEventListener("mousedown", (evt) => {
     closePopupOnClickOnOverlay(evt);
   });
 });
@@ -178,6 +178,7 @@ const validationOptions = {
   inputSectionSelector: ".form__section",
   inputErrorSelector: ".form__input-error",
   inputErrorClass: "form__input-error_active",
+  inputInValide: "form__input_invalid"
 };
 // вызов функции валидации
 enableValidation(validationOptions);

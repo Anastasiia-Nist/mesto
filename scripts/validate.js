@@ -11,26 +11,29 @@ const hiddenError = (errorElement, inputErrorClass) => {
 
 // функция проверки на валидность
 const setInputState = (inputElement, isValid, options) => {
-  const { inputSectionSelector, inputErrorSelector, inputErrorClass } = options;
+  const {inputSectionSelector, inputErrorSelector, inputErrorClass, inputInValide} = options;
   const inputSectionElement = inputElement.closest(inputSectionSelector); //находим ближайшего родителя с классом form__section у инпута
   const errorElement = inputSectionElement.querySelector(inputErrorSelector); //в родителе ищем класс form__input-error
   if (isValid) {
     // если форма валидна, isValid === true
-    hiddenError(errorElement, inputErrorClass); //скрываем span с классами form__input-error и form__input-error_active
+    hiddenError(errorElement, inputErrorClass, inputInValide); //скрываем span с классами form__input-error и form__input-error_active
+    inputElement.classList.remove(inputInValide); // удаляем красный бордер
   } else {
     //если нет
-    showError(errorElement, inputElement.validationMessage, inputErrorClass); // показываем span с классами form__input-error и form__input-error_active
+    showError(errorElement, inputElement.validationMessage, inputErrorClass, inputInValide); // показываем span с классами form__input-error и form__input-error_active
+    inputElement.classList.add(inputInValide); // добавляем красный бордер
   }
 };
 
 // добавление disabled к нопке сохранить/создать
-const enableButton = (buttonElement) => {
-  buttonElement.removeAttribute("disabled");
-};
-// удаление disabled у кнопки сохранить/создать
 const disableButton = (buttonElement) => {
   buttonElement.setAttribute("disabled", true);
 };
+// удаление disabled у кнопки сохранить/создать
+const enableButton = (buttonElement) => {
+  buttonElement.removeAttribute("disabled");
+};
+
 // переключение кнопки сохранить/создать
 const toggleButtonState = (inputs, submitElement) => {
   const formIsValid = inputs.every(
@@ -43,13 +46,14 @@ const toggleButtonState = (inputs, submitElement) => {
     disableButton(submitElement);
   }
 };
+
 // переключение span
 const toggleInputState = (inputElement, options) => {
   const isValid = inputElement.validity.valid; // получаем значение isValid
   setInputState(inputElement, isValid, options); //запускаем проверку на валидность с полученым значением isValid
 };
 
-//функция навешивания слушателей на все инпуты
+//навешиваем слушатели на все инпуты
 const setEventListeners = (form, options) => {
   const submitElement = form.querySelector(options.submitSelector);
   const inputs = Array.from(form.querySelectorAll(options.inputSelector));
@@ -63,6 +67,7 @@ const setEventListeners = (form, options) => {
   });
   toggleButtonState(inputs, submitElement); // дизаблим кнопку сразу при открытии попапа
 };
+
 // функция валидации
 const enableValidation = ({
   formSelector,
@@ -71,6 +76,7 @@ const enableValidation = ({
   inputSectionSelector,
   inputErrorSelector,
   inputErrorClass,
+  inputInValide,
 }) => {
   const forms = Array.from(document.querySelectorAll(formSelector));
   forms.forEach((form) => {
@@ -80,6 +86,7 @@ const enableValidation = ({
       inputSectionSelector,
       inputErrorSelector,
       inputErrorClass,
+      inputInValide,
     });
   });
 };
