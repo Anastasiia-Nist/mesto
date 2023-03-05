@@ -11,8 +11,8 @@
  - попапы (всплывающие окна),
  - добавление элементов на страницу,
  - удаление элементов со страницы,
- - template
- - формы 
+ - template,
+ - формы и их валидация.
 
 **GitHub Pages**
 * [Ссылка на GitHub Pages](https://anastasiia-nist.github.io/mesto-by-anastasiia/)

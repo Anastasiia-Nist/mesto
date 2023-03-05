@@ -13,19 +13,19 @@ const cardsButtonAdd = document.querySelector(".profile__button-add");
 //форма User
 const profileName = document.querySelector(".profile__name");
 const profileCareer = document.querySelector(".profile__career");
-const formProfile = document.querySelector(".popup__form-profile");
-const nameInput = document.querySelector(".popup__input_type_name");
-const careerInput = document.querySelector(".popup__input_type_career");
+const formProfile = document.querySelector(".form-profile");
+const nameInput = document.querySelector(".form__input_type_name");
+const careerInput = document.querySelector(".form__input_type_career");
 
 // карточки
 const cardList = document.querySelector(".cards");
 const template = document.querySelector("#template-card");
 
 // форма добавления карточек
-const formCards = document.querySelector(".popup__form-cards");
+const formCards = document.querySelector(".form-cards");
 
-const cardInput = document.querySelector(".popup__input_card_name");
-const urlInput = document.querySelector(".popup__input_card_img");
+const cardInput = document.querySelector(".form__input_card_name");
+const urlInput = document.querySelector(".form__input_card_img");
 // попап большой картинки
 const cardImage = document.querySelector(".popup-image__large-image");
 const cardName = document.querySelector(".popup-image__title-image");
@@ -44,6 +44,9 @@ function openProfilePopup() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   careerInput.value = profileCareer.textContent;
+  popupProfile.addEventListener("click", (evt) => { 
+    closePopupOnClickOnOverlay(evt); 
+  });
 }
 
 //отправка формы блока User (редактирование имени и карьеры)
@@ -86,6 +89,9 @@ function createCard(name, link) {
     cardImage.src = link;
     cardImage.alt = name;
     cardName.textContent = name;
+    popupImage.addEventListener("click", (evt) => { 
+      closePopupOnClickOnOverlay(evt); 
+    });
   }
 
   //слушатели на карточке
@@ -120,6 +126,9 @@ profileButtonEdit.addEventListener("click", openProfilePopup);
 //открытие попапа с формой добавления карточек
 cardsButtonAdd.addEventListener("click", function () {
   openPopup(popupCards);
+  popupCards.addEventListener("click", (evt) => { 
+    closePopupOnClickOnOverlay(evt); 
+  });
 });
 
 //отправка формы блока User
@@ -138,3 +147,48 @@ popupCardsButtonClose.addEventListener("click", function () {
 popupImageButtonClose.addEventListener("click", function () {
   closePopup(popupImage);
 });
+// закрытие попапов при клике на оверлей
+function closePopupOnClickOnOverlay(evt) {
+    if(evt.currentTarget === evt.target) {
+      closePopup(evt.currentTarget);
+    }  
+}
+
+// закрытие попапов пнажатием esc
+function closePopupEscape () {
+  window.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+      const popups = Array.from(document.querySelectorAll('.popup'));
+      popups.forEach(elem => {
+        if(elem.classList.contains("popup_opened")){
+          closePopup(elem)
+        }
+      })
+    }
+  })
+}
+closePopupEscape ();
+
+// опции валидации
+const validationOptions = {
+  formSelector: '.form',
+  submitSelector: '.form__button-save',
+  inputSelector: '.form__input',
+  inputSectionSelector: '.form__section',
+  inputErrorSelector: '.form__input-error',
+  inputErrorClass: 'form__input-error_active',
+};
+// вызов функции валидации
+enableValidation(validationOptions);
+
+// слушатель на все формы в html
+const forms =  Array.from(document.querySelectorAll('.form'));
+
+forms.forEach(form => {
+  const submitButton = form.querySelector('.form__button-save');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.reset(); // очистка полей
+    disableButton(submitButton); // неактивная кнопка сохранить/создать
+  });  
+})
