@@ -44,8 +44,8 @@ function openProfilePopup() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   careerInput.value = profileCareer.textContent;
-  popupProfile.addEventListener("click", (evt) => { 
-    closePopupOnClickOnOverlay(evt); 
+  popupProfile.addEventListener("click", (evt) => {
+    closePopupOnClickOnOverlay(evt);
   });
 }
 
@@ -58,7 +58,6 @@ function handleUserFormSubmit(evt) {
 }
 
 //добавление новой карточки
-
 function createCard(name, link) {
   const defaultCard = template.content.querySelector(".card");
   const newCard = defaultCard.cloneNode(true);
@@ -82,15 +81,15 @@ function createCard(name, link) {
   function deleteCard() {
     newCard.remove();
   }
-  
+
   //попап с большой картинкой
   function openImagePopup() {
     openPopup(popupImage);
     cardImage.src = link;
     cardImage.alt = name;
     cardName.textContent = name;
-    popupImage.addEventListener("click", (evt) => { 
-      closePopupOnClickOnOverlay(evt); 
+    popupImage.addEventListener("click", (evt) => {
+      closePopupOnClickOnOverlay(evt);
     });
   }
 
@@ -101,6 +100,7 @@ function createCard(name, link) {
 
   return newCard;
 }
+
 //добавление 6 карточек из массива initialCards на страничку
 function addInitialCard() {
   initialCards.forEach((card) => {
@@ -126,8 +126,8 @@ profileButtonEdit.addEventListener("click", openProfilePopup);
 //открытие попапа с формой добавления карточек
 cardsButtonAdd.addEventListener("click", function () {
   openPopup(popupCards);
-  popupCards.addEventListener("click", (evt) => { 
-    closePopupOnClickOnOverlay(evt); 
+  popupCards.addEventListener("click", (evt) => {
+    closePopupOnClickOnOverlay(evt);
   });
 });
 
@@ -147,48 +147,49 @@ popupCardsButtonClose.addEventListener("click", function () {
 popupImageButtonClose.addEventListener("click", function () {
   closePopup(popupImage);
 });
+
 // закрытие попапов при клике на оверлей
 function closePopupOnClickOnOverlay(evt) {
-    if(evt.currentTarget === evt.target) {
-      closePopup(evt.currentTarget);
-    }  
+  if (evt.currentTarget === evt.target) {
+    closePopup(evt.currentTarget);
+  }
 }
 
-// закрытие попапов пнажатием esc
-function closePopupEscape () {
-  window.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-      const popups = Array.from(document.querySelectorAll('.popup'));
-      popups.forEach(elem => {
-        if(elem.classList.contains("popup_opened")){
-          closePopup(elem)
+// закрытие попапов нажатием esc
+function closePopupEscape() {
+  window.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      const popups = Array.from(document.querySelectorAll(".popup"));
+      popups.forEach((elem) => {
+        if (elem.classList.contains("popup_opened")) {
+          closePopup(elem);
         }
-      })
+      });
     }
-  })
+  });
 }
-closePopupEscape ();
+closePopupEscape();
 
 // опции валидации
 const validationOptions = {
-  formSelector: '.form',
-  submitSelector: '.form__button-save',
-  inputSelector: '.form__input',
-  inputSectionSelector: '.form__section',
-  inputErrorSelector: '.form__input-error',
-  inputErrorClass: 'form__input-error_active',
+  formSelector: ".form",
+  submitSelector: ".form__button-save",
+  inputSelector: ".form__input",
+  inputSectionSelector: ".form__section",
+  inputErrorSelector: ".form__input-error",
+  inputErrorClass: "form__input-error_active",
 };
 // вызов функции валидации
 enableValidation(validationOptions);
 
 // слушатель на все формы в html
-const forms =  Array.from(document.querySelectorAll('.form'));
+const forms = Array.from(document.querySelectorAll(".form"));
 
-forms.forEach(form => {
-  const submitButton = form.querySelector('.form__button-save');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+forms.forEach((form) => {
+  const submitButton = form.querySelector(".form__button-save");
+  form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
     form.reset(); // очистка полей
     disableButton(submitButton); // неактивная кнопка сохранить/создать
-  });  
-})
+  });
+});
