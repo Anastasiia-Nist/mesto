@@ -10,6 +10,7 @@
   border: 1px solid #fff;
   padding: 0;
   cursor: pointer;
+  margin-right: 2px;
 }
 
 .profile__button-edit:hover {

@@ -65,7 +65,13 @@ const setEventListeners = (form, options) => {
       toggleButtonState(inputs, submitElement); // запускаем переключатель кнопки
     });
   });
-  toggleButtonState(inputs, submitElement); // дизаблим кнопку сразу при открытии попапа
+  toggleButtonState(inputs, submitElement); // дизаблим кнопку сразу при открытии 
+  form.addEventListener('reset', () => {
+    // `setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стэка) и только потом вызвать `toggleButtonState`
+    setTimeout(() => {
+      toggleButtonState(inputs, submitElement);
+    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+  });
 };
 
 // функция валидации
