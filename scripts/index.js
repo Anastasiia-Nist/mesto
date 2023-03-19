@@ -36,7 +36,7 @@ function openPopup(popup) {
 //закрытие попапа
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closeByEscape);
+  document.removeEventListener('keydown', closeByEscape); //оптимизация удаление слушателя
 }
 
 // попап блока User
@@ -64,7 +64,6 @@ function createCard(name, link) {
 
   newCardImg.src = link;
   newCardImg.alt = name;
-
   newCardTitle.textContent = name;
 
   //лайки и корзина
@@ -97,8 +96,8 @@ function createCard(name, link) {
 //добавление 6 карточек из массива initialCards на страничку
 function addInitialCard() {
   initialCards.forEach((card) => {
-    const newCard = createCard(card.name, card.link);
-    cardList.append(newCard);
+    const newCard = createCard(card.name, card.link); // cardList.append(createCard(card.name, card.link))
+    cardList.append(newCard); 
   });
 }
 
@@ -107,7 +106,7 @@ addInitialCard();
 //отправка формы блока Cards (добавление карточки)
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const newCard = createCard(cardInput.value, urlInput.value);
+  const newCard = createCard(cardInput.value, urlInput.value); //cardList.prepend(createCard(cardInput.value, urlInput.value))
   cardList.prepend(newCard);
   closePopup(popupCards);
   evt.target.reset();
@@ -167,7 +166,7 @@ forms.forEach((form) => {
   const submitButton = form.querySelector(".form__button-save");
   form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    form.reset(); // очистка полей
-    disableButton(submitButton); // неактивная кнопка сохранить/создать
+    form.reset(); // очистка полей после отправки формы
+    disableButton(submitButton); // неактивная кнопка сохранить/создать после отправки формы
   });
 });
