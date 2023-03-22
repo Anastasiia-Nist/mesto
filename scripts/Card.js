@@ -1,4 +1,4 @@
-import {openPopup, popupImage} from "./index.js"; //необходимы переменные для открытия попапа с картинкой
+import { openPopup, popupImage } from "./index.js"; //необходимы переменные для открытия попапа с картинкой
 
 export class Card {
   constructor(name, link, template) {
@@ -9,7 +9,10 @@ export class Card {
 
   //создать карточку
   createCard() {
-    this._newCard = document.querySelector(this._template).content.querySelector(".card").cloneNode(true); // клонировать template
+    this._newCard = document
+      .querySelector(this._template)
+      .content.querySelector(".card")
+      .cloneNode(true); // клонировать template
     // передать данные
     this._newCard.querySelector(".card__img").src = this._link;
     this._newCard.querySelector(".card__img").alt = this._name;
@@ -29,7 +32,7 @@ export class Card {
     this._newCard
       .querySelector(".card__button-like")
       .addEventListener("click", () => this._toggleLike());
-      this._newCard
+    this._newCard
       .querySelector(".card__img")
       .addEventListener("click", () => this._openImagePopup());
   }
@@ -41,9 +44,11 @@ export class Card {
 
   // переключатель лайков
   _toggleLike() {
-    this._newCard.querySelector(".card__button-like").classList.toggle("card__button-like_active");
+    this._newCard
+      .querySelector(".card__button-like")
+      .classList.toggle("card__button-like_active");
   }
-  
+
   // открытие попапа с картинкой
   _openImagePopup() {
     openPopup(popupImage);

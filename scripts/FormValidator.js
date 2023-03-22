@@ -30,7 +30,7 @@ export class FormValidator {
     errorElement.classList.remove(this._inputErrorClass); // удаляем класс form__input-error_active
     errorElement.textContent = ""; // скрывавем span
   }
-  
+
   // проверка на валидность
   _isValid(inputElement) {
     if (!this._inputElement.validity.valid) {
@@ -43,7 +43,9 @@ export class FormValidator {
   // переключатель кнопки в форме
   _toggleButtonState() {
     const isFormValid = this._formElement.checkValidity(); //API Вызов метода checkValidity() - статическая валидация ограничений (возвращает true/false)
-    this._buttonElement = this._formElement.querySelector(`.${this._submitSelector}`);
+    this._buttonElement = this._formElement.querySelector(
+      `.${this._submitSelector}`
+    );
     this._buttonElement.toggleAttribute(
       "disabled", // добавляем disabled
       !isFormValid // если валидация не пройдена
@@ -51,8 +53,11 @@ export class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputList = this._formElement.querySelectorAll(`.${this._inputSelector}`);
-    this._inputList.forEach((inputElement) => { //слушатели на все инпуты
+    this._inputList = this._formElement.querySelectorAll(
+      `.${this._inputSelector}`
+    );
+    this._inputList.forEach((inputElement) => {
+      //слушатели на все инпуты
       inputElement.addEventListener("input", () => {
         this._inputElement = inputElement;
         this._isValid();

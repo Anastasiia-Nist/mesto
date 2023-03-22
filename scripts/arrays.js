@@ -31,5 +31,5 @@ export const validationOptions = {
   submitSelector: "form__button-save",
   inputSelector: "form__input",
   inputErrorClass: "form__input-error_active",
-  inputInValide: "form__input_invalid",  
+  inputInValide: "form__input_invalid",
 };
