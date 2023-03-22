@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Москва",
     link: "https://images.unsplash.com/photo-1647767018428-fd1d2cfc0f9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
@@ -25,3 +25,11 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1582948818402-e1dbaec39311?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
   },
 ];
+
+// опции валидации
+export const validationOptions = {
+  submitSelector: "form__button-save",
+  inputSelector: "form__input",
+  inputErrorClass: "form__input-error_active",
+  inputInValide: "form__input_invalid",  
+};
