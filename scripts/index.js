@@ -38,11 +38,24 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape); //оптимизация удаление слушателя
 }
 
+// функция очистки импутов от ошибок, когда пользователь закрыл попап с невалидной формой
+function resetInputs(popup) {
+  const firstError = popup.querySelectorAll(".form__input-error_active")
+  firstError.forEach((error) => {
+    error.classList.remove("form__input-error_active")
+  });
+  const secondError = popup.querySelectorAll(".form__input_invalid")
+  secondError.forEach((error) => {
+    error.classList.remove("form__input_invalid")
+  })
+}
+
 // попап блока User
 function openProfilePopup() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   careerInput.value = profileCareer.textContent;
+  resetInputs(popupProfile);
 }
 
 //отправка формы блока User (редактирование имени и карьеры)
