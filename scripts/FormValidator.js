@@ -22,34 +22,33 @@ export class FormValidator {
     //   span.classList.remove(this._inputErrorClass);
     // });
     this._inputList.forEach((inputElement) => {
-      this._inputElement = inputElement;
       this._hiddenError(inputElement);
     });
   }
   
   // показываем ошибку
-  _showError() {
+  _showError(inputElement) {
     const errorElement = document.getElementById(
-      `${this._inputElement.id}-error`
+      `${inputElement.id}-error`
     ); // находим id элемента ошибки
-    this._inputElement.classList.add(this._inputInValide); // добавляем красный бордер
-    errorElement.textContent = this._inputElement.validationMessage; // API получаем сообщение для span
+    inputElement.classList.add(this._inputInValide); // добавляем красный бордер
+    errorElement.textContent = inputElement.validationMessage; // API получаем сообщение для span
     errorElement.classList.add(this._inputErrorClass); // добавляем класс form__input-error_active
   }
 
   // скрываем ошибку
-  _hiddenError() {
+  _hiddenError(inputElement) {
     const errorElement = document.getElementById(
-      `${this._inputElement.id}-error`
+      `${inputElement.id}-error`
     ); // находим id элемента ошибки
-    this._inputElement.classList.remove(this._inputInValide); // удаляем красный бордер
+    inputElement.classList.remove(this._inputInValide); // удаляем красный бордер
     errorElement.classList.remove(this._inputErrorClass); // удаляем класс form__input-error_active
     errorElement.textContent = ""; // скрывавем span
   }
 
   // проверка на валидность
   _isValid(inputElement) {
-    if (!this._inputElement.validity.valid) {
+    if (!inputElement.validity.valid) {
       this._showError(inputElement);
     } else {
       this._hiddenError(inputElement);
@@ -69,8 +68,7 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
       //слушатели на все инпуты
       inputElement.addEventListener("input", () => {
-        this._inputElement = inputElement;
-        this._isValid();
+        this._isValid(inputElement);
         this._toggleButtonState();
       });
       this._toggleButtonState(); // дизаблим кнопку сразу при открытии
