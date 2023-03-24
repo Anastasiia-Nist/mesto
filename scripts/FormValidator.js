@@ -5,17 +5,33 @@ export class FormValidator {
     this._inputErrorClass = object.inputErrorClass; //form__input-error_active
     this._inputInValide = object.inputInValide; //form__input_invalid
     this._formElement = formElement;
+    this._inputList = this._formElement.querySelectorAll(`.${this._inputSelector}`); //список все инпутов
+   // this._spanList = this._formElement.querySelectorAll(".form__input-error"); //список всех спанов
+    this._buttonElement = this._formElement.querySelector(`.${this._submitSelector}`); //form__button-save
   }
   // валидация форм
   enableValidation() {
     this._setEventListeners();
   }
-
+  // функция очистки всех инпутов от ошибок, когда пользователь закрыл попап с невалидной формой
+  hiddenAllErrors() {
+    // this._inputList.forEach((input) => { 
+    //   input.classList.remove(this._inputInValide);
+    // });
+    // this._spanList.forEach((span) => {
+    //   span.classList.remove(this._inputErrorClass);
+    // });
+    this._inputList.forEach((inputElement) => {
+      this._inputElement = inputElement;
+      this._hiddenError(inputElement);
+    });
+  }
+  
   // показываем ошибку
   _showError() {
     const errorElement = document.getElementById(
       `${this._inputElement.id}-error`
-    ); // находим элемент ошибки по id
+    ); // находим id элемента ошибки
     this._inputElement.classList.add(this._inputInValide); // добавляем красный бордер
     errorElement.textContent = this._inputElement.validationMessage; // API получаем сообщение для span
     errorElement.classList.add(this._inputErrorClass); // добавляем класс form__input-error_active
@@ -25,7 +41,7 @@ export class FormValidator {
   _hiddenError() {
     const errorElement = document.getElementById(
       `${this._inputElement.id}-error`
-    ); // находим элемент ошибки по id
+    ); // находим id элемента ошибки
     this._inputElement.classList.remove(this._inputInValide); // удаляем красный бордер
     errorElement.classList.remove(this._inputErrorClass); // удаляем класс form__input-error_active
     errorElement.textContent = ""; // скрывавем span
@@ -43,9 +59,6 @@ export class FormValidator {
   // переключатель кнопки в форме
   _toggleButtonState() {
     const isFormValid = this._formElement.checkValidity(); //API Вызов метода checkValidity() - статическая валидация ограничений (возвращает true/false)
-    this._buttonElement = this._formElement.querySelector(
-      `.${this._submitSelector}`
-    );
     this._buttonElement.toggleAttribute(
       "disabled", // добавляем disabled
       !isFormValid // если валидация не пройдена
@@ -53,9 +66,6 @@ export class FormValidator {
   }
 
   _setEventListeners() {
-    this._inputList = this._formElement.querySelectorAll(
-      `.${this._inputSelector}`
-    );
     this._inputList.forEach((inputElement) => {
       //слушатели на все инпуты
       inputElement.addEventListener("input", () => {

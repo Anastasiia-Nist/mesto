@@ -6,11 +6,10 @@ import { FormValidator } from "./FormValidator.js";
 const popups = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup-profile");
 const popupCards = document.querySelector(".popup-cards");
-export const popupImage = document.querySelector(".popup-image");
-
-//кнопки
-const profileButtonEdit = document.querySelector(".profile__button-edit");
-const cardsButtonAdd = document.querySelector(".profile__button-add");
+const popupImage = document.querySelector(".popup-image");
+// попап большой картинки
+const cardImage = document.querySelector(".popup-image__large-image");
+const cardName = document.querySelector(".popup-image__title-image");
 
 //форма User
 const profileName = document.querySelector(".profile__name");
@@ -20,15 +19,21 @@ const nameInput = document.querySelector(".form__input_type_name");
 const careerInput = document.querySelector(".form__input_type_career");
 
 // карточки
-export const cardList = document.querySelector(".cards");
+const cardList = document.querySelector(".cards");
 
 // форма добавления карточек
 const cardForm = document.forms.CardForm;
 const cardInput = document.querySelector(".form__input_card_name");
 const urlInput = document.querySelector(".form__input_card_img");
 
+//кнопки
+const profileButtonEdit = document.querySelector(".profile__button-edit");
+const cardsButtonAdd = document.querySelector(".profile__button-add");
+const btnSabmitCardForm = cardForm.querySelector(`.${validationOptions.submitSelector}`)
+
+
 //открытие попапа
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 }
@@ -38,16 +43,12 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape); //оптимизация удаление слушателя
 }
 
-// функция очистки импутов от ошибок, когда пользователь закрыл попап с невалидной формой
-function resetInputs(popup) {
-  const firstError = popup.querySelectorAll(".form__input-error_active")
-  firstError.forEach((error) => {
-    error.classList.remove("form__input-error_active")
-  });
-  const secondError = popup.querySelectorAll(".form__input_invalid")
-  secondError.forEach((error) => {
-    error.classList.remove("form__input_invalid")
-  })
+//попап с большой картинкой
+function openImagePopup(name, link) {
+  openPopup(popupImage);
+  cardImage.src = link;
+  cardImage.alt = name;
+  cardName.textContent = name;
 }
 
 // попап блока User
@@ -55,7 +56,7 @@ function openProfilePopup() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   careerInput.value = profileCareer.textContent;
-  resetInputs(popupProfile);
+  profileFormValid.hiddenAllErrors();
 }
 
 //отправка формы блока User (редактирование имени и карьеры)
@@ -69,10 +70,12 @@ function handleUserFormSubmit(evt) {
 //отправка формы блока Cards (добавление карточки)
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const newCard = new Card(cardInput.value, urlInput.value, "#template-card");
+  const newCard = new Card(cardInput.value, urlInput.value, "#template-card", openImagePopup);
   cardList.prepend(newCard.createCard()); // добавление новой карточки из формы
   closePopup(popupCards);
   evt.target.reset();
+  //btnSabmitCardForm.setAttribute("disabled", true) //дизаблим кнопку
+  cardFormValid._toggleButtonState() //дизаблим кнопку правильно)
 }
 
 //открытие попапа User
@@ -114,7 +117,8 @@ for (let i = 0; i < initialCards.length; i++) {
   const newCard = new Card(
     initialCards[i].name,
     initialCards[i].link,
-    "#template-card"
+    "#template-card",
+    openImagePopup
   );
   cardList.append(newCard.createCard());
 }

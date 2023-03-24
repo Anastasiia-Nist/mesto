@@ -1,10 +1,9 @@
-import { openPopup, popupImage } from "./index.js"; //необходимы переменные для открытия попапа с картинкой
-
 export class Card {
-  constructor(name, link, template) {
+  constructor(name, link, template, openImagePopup) {
     this._name = name;
     this._link = link;
     this._template = template;
+    this._openImagePopup = openImagePopup;
   }
 
   //создать карточку
@@ -13,10 +12,13 @@ export class Card {
       .querySelector(this._template)
       .content.querySelector(".card")
       .cloneNode(true); // клонировать template
+    // переменные для карточки
+    const newCardImg = this._newCard.querySelector(".card__img");
+    const newCardTitle = this._newCard.querySelector(".card__name");
     // передать данные
-    this._newCard.querySelector(".card__img").src = this._link;
-    this._newCard.querySelector(".card__img").alt = this._name;
-    this._newCard.querySelector(".card__name").textContent = this._name;
+    newCardImg.src = this._link;
+    newCardImg.alt = this._name;
+    newCardTitle.textContent = this._name;
 
     //запустить функцию слушатели
     this._setEventListeners();
@@ -34,12 +36,13 @@ export class Card {
       .addEventListener("click", () => this._toggleLike());
     this._newCard
       .querySelector(".card__img")
-      .addEventListener("click", () => this._openImagePopup());
+      .addEventListener("click", () => this._openImagePopup(this._name, this._link));
   }
 
   // удалить карточку
   _deleteCard() {
     this._newCard.remove();
+    this._newCard = null;
   }
 
   // переключатель лайков
@@ -47,13 +50,5 @@ export class Card {
     this._newCard
       .querySelector(".card__button-like")
       .classList.toggle("card__button-like_active");
-  }
-
-  // открытие попапа с картинкой
-  _openImagePopup() {
-    openPopup(popupImage);
-    document.querySelector(".popup-image__large-image").src = this._link;
-    document.querySelector(".popup-image__large-image").alt = this._name;
-    document.querySelector(".popup-image__title-image").textContent = this._name;
   }
 }
