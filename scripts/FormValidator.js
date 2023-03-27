@@ -56,7 +56,7 @@ export class FormValidator {
   }
 
   // переключатель кнопки в форме
-  _toggleButtonState() {
+  toggleButtonState() {
     const isFormValid = this._formElement.checkValidity(); //API Вызов метода checkValidity() - статическая валидация ограничений (возвращает true/false)
     this._buttonElement.toggleAttribute(
       "disabled", // добавляем disabled
@@ -69,9 +69,9 @@ export class FormValidator {
       //слушатели на все инпуты
       inputElement.addEventListener("input", () => {
         this._isValid(inputElement);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
-      this._toggleButtonState(); // дизаблим кнопку сразу при открытии
+      this.toggleButtonState(); // дизаблим кнопку сразу при открытии
     });
   }
 }

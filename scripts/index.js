@@ -75,7 +75,7 @@ function handleCardFormSubmit(evt) {
   closePopup(popupCards);
   evt.target.reset();
   //btnSabmitCardForm.setAttribute("disabled", true) //дизаблим кнопку
-  cardFormValid._toggleButtonState() //дизаблим кнопку правильно)
+  cardFormValid.toggleButtonState() //дизаблим кнопку правильно)
 }
 
 //открытие попапа User
