@@ -1,3 +1,5 @@
+import "./index.css";
+
 import {
   popupProfile,
   popupCards,
@@ -13,16 +15,16 @@ import {
   cardsButtonAdd,
   cardInput,
   urlInput,
-} from "./../utils/constants.js";
+} from "../utils/constants.js";
 
-import { initialCards, validationOptions } from "./../utils/arrays.js";
-import { Card } from "./../components/Card.js";
-import { FormValidator } from "./../components/FormValidator.js";
-import { Popup } from "./../components/Popup.js";
-import { PopupWithImage } from "./../components/PopupWithImage.js";
-import { UserInfo } from "./../components/UserInfo.js";
-import { PopupWithForm } from "./../components/PopupWithForm.js";
-import { Section } from "./../components/Section.js";
+import { initialCards, validationOptions } from "../utils/arrays.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Popup } from "../components/Popup.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { Section } from "../components/Section.js";
 
 // попапы
 const popupUser = new Popup(popupProfile);
@@ -58,65 +60,56 @@ cardsButtonAdd.addEventListener("click", () => {
   popupCard.open();
 });
 
+// функция открытия попапа с картинкой
+const handleCardClick = (name, link) => {
+  popupPicture.open(name, link);
+};
+
+// форма редактирования профиля 
 const popupProfileForm = new PopupWithForm({
-  popupSelector: popupProfile,
+  popup: popupProfile,
   handleFormSubmit: ({ name, career }) => {
     ProfileInfo.setUserInfo(name, career);
-    popupProfileForm.close();
   },
 });
 
 popupProfileForm.setEventListeners();
 
+// функция создания карточки
+const createCard = (data, template, handleCardClick) => {
+  const card = new Card(data, template, handleCardClick);
+  return card.createCard();
+};
+
 //отрисовка template (добавление карточек из коробки)
-const cardTemplate = new Section(
+const initialCardsList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const newCard = new Card(
-        initialCards[item].name,
-        initialCards[item].link,
+      const initialsCard = createCard(
+        initialCards[item],
         "#template-card",
-        popupPicture.open.bind(popupPicture)
+        handleCardClick
       );
-      cardTemplate.addItem(newCard.createCard());
+      initialCardsList.addItem(initialsCard);
     },
   },
   cardList
 );
-cardTemplate.generateCard();
 
+initialCardsList.generateCard();
 
-
+// добавление новой карточки из формы
 const popupCreateCardForm = new PopupWithForm({
-  popupSelector: popupCards,
+  popup: popupCards,
   handleFormSubmit: () => {
-    const newCard = new Card(
-      cardInput.value,
-      urlInput.value,
+    const newCard = createCard(
+      { name: cardInput.value, link: urlInput.value },
       "#template-card",
-      popupPicture.open.bind(popupPicture)
+      handleCardClick
     );
-    cardList.prepend(newCard.createCard());
-    popupCreateCardForm.close();
+    cardList.prepend(newCard);
     cardFormValid.toggleButtonState();
-
-    // const cardNewTemplate = new Section(
-    //   {
-    //     items: {cardInput, urlInput},
-    //     renderer: (item) => {
-    //       const newCard = new Card(
-    //         cardInput.value,
-    //         urlInput.value,
-    //         "#template-card",
-    //         popupPicture.open.bind(popupPicture)
-    //       );
-    //       cardList.prepend(newCard.createCard());
-    //     },
-    //   },
-    //   cardList
-    // );
-    // cardNewTemplate.generateCard();
   },
 });
 

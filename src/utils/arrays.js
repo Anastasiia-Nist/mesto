@@ -1,3 +1,12 @@
+// import Ivanovo from './../images/Ivanovo.jpg';
+// import Kostroma from './../images/Kostroma.jpg';
+// import Kurgan from './../images/Kurgan.jpg';
+// import Murmansk from './../images/Murmansk.jpg';
+// import SaintPetersburg from './../images/Saint-Petersburg.jpg';
+// import Taganrog from './../images/Taganrog.jpg';
+
+
+
 export const initialCards = [
   {
     name: "Москва",
