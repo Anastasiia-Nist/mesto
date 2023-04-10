@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, template, openImagePopup) {
+  constructor(name, link, template, handleCardClick) {
     this._name = name;
     this._link = link;
     this._template = template;
-    this._openImagePopup = openImagePopup;
+    this._handleCardClick = handleCardClick;
   }
 
   //создать карточку
@@ -36,7 +36,9 @@ export class Card {
       .addEventListener("click", () => this._toggleLike());
     this._newCard
       .querySelector(".card__img")
-      .addEventListener("click", () => this._openImagePopup(this._name, this._link));
+      .addEventListener("click", () =>
+        this._handleCardClick(this._name, this._link)
+      );
   }
 
   // удалить карточку
