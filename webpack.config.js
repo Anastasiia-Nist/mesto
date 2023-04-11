@@ -58,4 +58,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
   ],
+
+  watch: true,
+
+  // Настройки для watch
+  watchOptions: {
+	ignored: /node_modules/,
+  }
 };

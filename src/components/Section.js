@@ -6,12 +6,12 @@ export class Section {
   }
 
   generateCard() {
-    for (let i = 0; i < this._items.length; i++) {
-      this._renderer(i);
-    }
+    this._items.forEach((item) => {
+      this._renderer(item);
+  });
   }
 
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 }

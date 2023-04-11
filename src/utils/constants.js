@@ -19,8 +19,6 @@ export const cardList = document.querySelector(".cards");
 
 // форма добавления карточек
 export const cardForm = document.forms.CardForm;
-export const cardInput = document.querySelector(".form__input_card_name");
-export const urlInput = document.querySelector(".form__input_card_img");
 
 //кнопки
 export const profileButtonEdit = document.querySelector(".profile__button-edit");
