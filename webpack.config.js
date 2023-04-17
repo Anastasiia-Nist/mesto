@@ -58,7 +58,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
   ],
-
+  devtool: "source-map",
   watch: true,
 
   // Настройки для watch

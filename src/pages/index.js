@@ -101,9 +101,9 @@ initialCardsList.generateCard();
 // добавление новой карточки из формы
 const popupCreateCardForm = new PopupWithForm({
   popup: popupCards,
-  handleFormSubmit: () => {
+  handleFormSubmit: (data) => {
     const newCard = createCard(
-      popupCreateCardForm._getInputValues(),
+      data,
       "#template-card",
       handleCardClick
     );
