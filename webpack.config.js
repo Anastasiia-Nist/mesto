@@ -59,10 +59,4 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
   devtool: "source-map",
-  watch: true,
-
-  // Настройки для watch
-  watchOptions: {
-	ignored: /node_modules/,
-  }
 };
