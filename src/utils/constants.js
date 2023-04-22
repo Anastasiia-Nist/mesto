@@ -2,6 +2,10 @@
 export const popupProfile = document.querySelector(".popup-profile");
 export const popupCards = document.querySelector(".popup-cards");
 export const popupImage = document.querySelector(".popup-image");
+export const popupTrash = document.querySelector(".popup-trash");
+export const popupAvatar = document.querySelector(".popup-avatar");
+export const avatar = document.querySelector(".profile__avatar");
+export const avatarForm = document.forms.AvatarForm;
 
 // попап большой картинки
 export const cardImage = document.querySelector(".popup-image__large-image");
