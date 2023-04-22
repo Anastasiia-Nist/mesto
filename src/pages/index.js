@@ -233,6 +233,7 @@ const popupAvatarForm = new PopupWithForm({
 avatar.addEventListener("click", () => {
   popupAvatarForm.open();
   avatarFormValid.toggleButtonState();
+  avatarFormValid.hiddenAllErrors()
 });
 
 popupAvatarForm.setEventListeners();
