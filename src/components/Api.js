@@ -1,6 +1,7 @@
 export class Api {
   constructor(dataApi) {
-    this._authorization = dataApi.authorization;
+    this._baseUrl = dataApi.baseUrl;
+    this._headers = dataApi.headers;
   }
   //
   _checkResult(res) {
@@ -12,42 +13,33 @@ export class Api {
 
   //загружаем информацию о юзере с сервера
   getUserInfo() {
-    return fetch("https://nomoreparties.co/v1/cohort-64/users/me/", {
-      headers: {
-        authorization: this._authorization,
-      },
+    return fetch(`${this._baseUrl}users/me/`, {
+      headers: this._headers,
     }).then(this._checkResult);
   }
   //загружаем карточки с сервера
   getInitialCards() {
-    return fetch("https://mesto.nomoreparties.co/v1/cohort-64/cards/", {
-      headers: {
-        authorization: this._authorization,
-      },
+    return fetch(`${this._baseUrl}cards/`, {
+      headers: this._headers,
     }).then(this._checkResult);
   }
-  // отправляем данные юзера на сервер
+  // отправляем данные юзера на сервер 
   patchUserInfo(data) {
-    return fetch("https://nomoreparties.co/v1/cohort-64/users/me/", {
+    return fetch(`${this._baseUrl}users/me/`, {
       method: "PATCH",
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
+
       body: JSON.stringify({
         name: data.name,
-        about: data.career,
+        about: data.about,
       }),
     }).then(this._checkResult);
   }
-  // отправляем данные карточки на сервер
+  // отправляем данные карточки на сервер 
   postNewCard(data) {
-    return fetch("https://nomoreparties.co/v1/cohort-64/cards/", {
+    return fetch(`${this._baseUrl}cards/`, {
       method: "POST",
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -58,49 +50,40 @@ export class Api {
   //удалени карточки
   deleteCard(cardId) {
     return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-64/cards/${cardId}/`,
+      `${this._baseUrl}cards/${cardId}/`,
       {
         method: "DELETE",
-        headers: {
-          authorization: this._authorization,
-        },
+        headers: this._headers,
       }
     ).then(this._checkResult);
   }
   // лайк и дизлайк
   likeCard(cardId) {
     return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-64/cards/${cardId}/likes`,
+      `${this._baseUrl}cards/${cardId}/likes`,
       {
         method: "PUT",
-        headers: {
-          authorization: this._authorization,
-        },
+        headers: this._headers,
       }
     ).then(this._checkResult);
   }
 
   dislikeCard(cardId) {
     return fetch(
-      `https://mesto.nomoreparties.co/v1/cohort-64/cards/${cardId}/likes`,
+      `${this._baseUrl}cards/${cardId}/likes`,
       {
         method: "DELETE",
-        headers: {
-          authorization: this._authorization,
-        },
+        headers: this._headers,
       }
     ).then(this._checkResult);
   }
-  // добавление аватара
+  // добавление аватара 
   patchUserAvatar(item) {
     return fetch(
-      "https://mesto.nomoreparties.co/v1/cohort-64/users/me/avatar",
+      `${this._baseUrl}users/me/avatar`,
       {
         method: "PATCH",
-        headers: {
-          authorization: this._authorization,
-          "Content-Type": "application/json",
-        },
+        headers: this._headers,
         body: JSON.stringify({
           avatar: item.link,
         }),

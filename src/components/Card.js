@@ -5,7 +5,8 @@ export class Card {
     handleCardClick,
     handleOpenPopupDelete,
     handleLikeCard,
-    handleDislikeCard
+    handleDislikeCard,
+    userID,
   ) {
     this._data = data;
     this._name = data.name;
@@ -16,31 +17,41 @@ export class Card {
     this._handleOpenPopupDelete = handleOpenPopupDelete;
     this._handleLikeCard = handleLikeCard;
     this._handleDislikeCard = handleDislikeCard;
+    this._userID = userID;
     this._ownerId = data.owner._id;
     this._cardId = data._id;
   }
 
   //создать карточку
   createCard() {
+
     // клонировать template
     this._newCard = document
       .querySelector(this._template)
       .content.querySelector(".card")
       .cloneNode(true);
+
     // переменные для карточки
     const newCardImg = this._newCard.querySelector(".card__img");
     const newCardTitle = this._newCard.querySelector(".card__name");
-    const counter = this._newCard.querySelector(".card__button-like-counter");
+    this._counter = this._newCard.querySelector(".card__button-like-counter");
+    this._likeBtn = this._newCard.querySelector(".card__button-like");
+    this._trashBtn = this._newCard.querySelector(".card__button-trash");
+
     // передать данные
     newCardImg.src = this._link;
     newCardImg.alt = this._name;
     newCardTitle.textContent = this._name;
+
     // показать количество лайков при загрузке
-    counter.textContent = this._likes.length;
+    this._counter.textContent = this._likes.length;
+
     // отображать мои лайки
-    if (this._likes.filter(like => like._id === "8aabda33a800114d8d67f69a").length > 0) {
-      const likeBtn = this._newCard.querySelector(".card__button-like");
-      likeBtn.classList.add("card__button-like_active");
+    if (
+      this._likes.filter((like) => like._id === this._userID)
+        .length > 0
+    ) {
+      this._likeBtn.classList.add("card__button-like_active");
     }
 
     //запустить функцию слушатели
@@ -53,23 +64,19 @@ export class Card {
 
   //слушатели
   _setEventListeners() {
-    const counter = this._newCard.querySelector(".card__button-like-counter");
-    const likeBtn = this._newCard.querySelector(".card__button-like");
-    const trashBtn = this._newCard.querySelector(".card__button-trash");
-
-    trashBtn.addEventListener("click", () => {
+    this._trashBtn.addEventListener("click", () => {
       this._handleOpenPopupDelete(this);
     });
 
-    likeBtn.addEventListener("click", () => {
-      this._toggleLike(likeBtn);
-      if (likeBtn.classList.contains("card__button-like_active")) {
-        this._handleLikeCard(this._cardId, counter);
+    this._likeBtn.addEventListener("click", () => {
+      if (this._likeBtn.classList.contains("card__button-like_active")) {
+        this._handleDislikeCard(this);
+        
       } else {
-        this._handleDislikeCard(this._cardId, counter);
+        this._handleLikeCard(this);
       }
     });
-    
+
     this._newCard
       .querySelector(".card__img")
       .addEventListener("click", () =>
@@ -84,14 +91,13 @@ export class Card {
   }
 
   // переключатель лайков
-  _toggleLike(likeBtn) {
-    likeBtn.classList.toggle("card__button-like_active");
+  _toggleLike() {
+    this._likeBtn.classList.toggle("card__button-like_active");
   }
   // проверить ID, удалить "корзину" не у моей карточки
   _isOwner() {
-    const trashButton = this._newCard.querySelector(".card__button-trash");
-    if (this._ownerId !== "8aabda33a800114d8d67f69a") {
-      trashButton.remove();
+    if (this._ownerId !== this._userID) {
+      this._trashBtn.remove();
     }
   }
 }
