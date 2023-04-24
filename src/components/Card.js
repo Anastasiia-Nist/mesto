@@ -91,7 +91,7 @@ export class Card {
   }
 
   // переключатель лайков
-  _toggleLike() {
+  toggleLike() {
     this._likeBtn.classList.toggle("card__button-like_active");
   }
   // проверить ID, удалить "корзину" не у моей карточки

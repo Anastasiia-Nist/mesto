@@ -12,7 +12,7 @@ export class UserInfo {
     };
   }
   setUserInfo({name, about, avatar, id}) {
-    this._avatar.src = avatar; // я бы вынесла в отдельный метод, чтобы не "обновлять" аватар при изменении имени в профиле
+    this._avatar.src = avatar;
     this._name.textContent = name;
     this._about.textContent = about;
     this._id = id;

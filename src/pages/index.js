@@ -76,7 +76,7 @@ const popupProfileForm = new PopupWithForm({
     return api
       .patchUserInfo(data)
       .then((result) => {
-        profileInfo.setUserInfo(result); //меня смущает что аватар заново "отрисовывается". Я бы вынесла его в отдельный метод
+        profileInfo.setUserInfo(result);
         popupProfileForm.close();
       })
       .catch((err) => {
@@ -170,7 +170,7 @@ const handleLikeCard = (card) => {
   api
     .likeCard(card._cardId)
     .then((result) => {
-      card._toggleLike();
+      card.toggleLike();
       card._counter.textContent = result.likes.length;
     })
     .catch((err) => {
@@ -182,7 +182,7 @@ const handleDislikeCard = (card) => {
   api
     .dislikeCard(card._cardId)
     .then((result) => {
-      card._toggleLike();
+      card.toggleLike();
       card._counter.textContent = result.likes.length;
     })
     .catch((err) => {
