@@ -29,7 +29,7 @@
 
 
 **GitHub Pages:**
-* [Ссылка на GitHub Pages](https://anastasiia-nist.github.io/mesto-by-anastasiia/)
+* [Ссылка на GitHub Pages](https://anastasiia-nist.github.io/mesto/)
 
 **Место на «React»:** 
 * [Ссылка на GitHub React](https://github.com/Anastasiia-Nist/mesto-react)
